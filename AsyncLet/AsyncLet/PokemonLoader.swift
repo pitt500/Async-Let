@@ -7,19 +7,14 @@
 
 import Foundation
 
-enum PokemonError: Error, Identifiable {
+enum PokemonError: Error {
     case serverError
     case noData
-
-    var id: Self {
-        self
-    }
 }
 
 class PokemonLoader: ObservableObject {
     @Published var error = false
     @Published var pokemonData: [Data] = []
-    @Published var isLoading = false
 
     func getImage(pokemonId: Int) async throws -> Data {
         let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(pokemonId).png")!
@@ -41,7 +36,6 @@ class PokemonLoader: ObservableObject {
     func loadWithAwait() async {
         do {
             let start = Date.now
-            isLoading = true
             let bulbasaur = try await getImage(pokemonId: 1)
             let charizard = try await getImage(pokemonId: 6)
             let squirtle  = try await getImage(pokemonId: 7)
@@ -53,7 +47,6 @@ class PokemonLoader: ObservableObject {
 
 
             pokemonData = [bulbasaur, charizard, squirtle, pidgeotto, kingler,pikachu]
-            isLoading = false
         } catch {
             print(error)
             self.error = true
@@ -64,7 +57,6 @@ class PokemonLoader: ObservableObject {
     func loadWithAsyncLet() async {
         do {
             let start = Date.now
-            isLoading = true
             async let bulbasaur = getImage(pokemonId: 1)
             async let charizard = getImage(pokemonId: 6)
             async let squirtle  = getImage(pokemonId: 7)
@@ -75,7 +67,6 @@ class PokemonLoader: ObservableObject {
 
 
             pokemonData = try await [bulbasaur, charizard, squirtle, pidgeotto, kingler,pikachu]
-            isLoading = false
 
         } catch {
             print(error)

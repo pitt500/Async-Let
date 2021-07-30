@@ -12,18 +12,16 @@ struct ContentView: View {
 
     var body: some View {
         ScrollView {
-            ZStack {
-                VStack {
-                    ForEach(loader.pokemonData, id: \.hashValue) { data in
-                        Image(data: data)
-                            .resizable()
-                            .frame(width: 120,height: 120)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                }
+            LazyVStack {
+                ForEach(
+                    loader.pokemonData,
+                    id: \.hashValue
+                ) { data in
+                    Image(data: data)
+                        .resizable()
+                        .frame(width: 120,height: 120)
+                        .aspectRatio(contentMode: .fit)
 
-                if loader.isLoading {
-                    ProgressView()
                 }
             }
         }
