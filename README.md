@@ -1,5 +1,5 @@
 # Async Let
-This a demo made for [Swift && Tips](https://www.youtube.com/c/SwiftandTips)
+This is a demo made for [Swift && Tips](https://www.youtube.com/c/SwiftandTips)
 
 [Link to the video](https://youtu.be/MjfEpYs5XA4)
 
