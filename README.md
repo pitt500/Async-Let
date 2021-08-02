@@ -3,7 +3,7 @@ This a demo made for [Swift && Tips](https://www.youtube.com/c/SwiftandTips)
 
 [Link to the video](https://youtu.be/MjfEpYs5XA4)
 
-![Actors in Swift!](/async let.001.jpeg)
+![Actors in Swift!](/async%20let.001.jpeg)
 
 Hello guys, Welcome to another video!
 
