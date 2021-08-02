@@ -17,7 +17,7 @@ class PokemonLoader: ObservableObject {
     @Published var pokemonData: [Data] = []
 
     func getImage(pokemonId: Int) async throws -> Data {
-        let url = URL(string: "https://pokeres.bastionbot.org/images/pokemon/\(pokemonId).png")!
+        let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonId).png")!
         let (data, response) = try await URLSession.shared.data(from: url)
 
         guard (response as? HTTPURLResponse)?.statusCode == 200
